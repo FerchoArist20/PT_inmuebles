@@ -1,4 +1,21 @@
-import app from './app.js'
+import app from "./app.js"
+import {sequelize} from "./database/database.js";
 
-app.listen(3000)
-console.log('server is listening on port', 3000)
+async function main(){
+    try {
+        await sequelize .authenticate();
+        console.log("Conexion establecida correctamente.");
+        app.listen(4000);
+        console.log("server is listening on port", 4000);
+    } catch (error) {
+        console.error("No fue posible realizar la conexion.", error);
+    }
+}
+
+main();
+
+
+
+
+
+
