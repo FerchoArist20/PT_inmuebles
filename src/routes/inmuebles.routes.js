@@ -3,7 +3,7 @@ import { getinmuebles, createinmueble, updateinmueble, deleteinmueble, getinmueb
 const router =   Router();
 
 router.get("/inmuebles", getinmuebles); //obtener inmuebles
-router.post("/inmuebles", createinmueble); //guardar inmueble
+router.post("/inmuebles", createinmueble); //crear inmueble
 router.put("/inmuebles/:id", updateinmueble); // actualizar inmueble
 router.delete("/inmuebles/:id", deleteinmueble); //eliminar un inmueble
 router.get("/inmuebles/:id", getinmueble); // obtener un solo inmueble

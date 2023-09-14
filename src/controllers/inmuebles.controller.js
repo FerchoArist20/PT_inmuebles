@@ -2,7 +2,6 @@ import {inmueble} from '../models/inmueble.js'
 
 export const getinmuebles = async (req, res) => {
     try {
-       // throw new Error('query failed')
         const inmuebles_get1 = await inmueble.findAll()
         res.json(inmuebles_get1);
     } catch (error) {
@@ -73,12 +72,20 @@ export const updateinmueble = async (req, res) =>{
 export const deleteinmueble = async (req, res) =>{
     try {
         const { id } = req.params;
-        await inmueble.destroy({
+        const inmuebleeliminado = await inmueble.destroy({
             where:{
                 id,
             },
         });
-        res.sendStatus(204)
+        const mensaje = {
+            mensaje: 'Inmueble eliminado correctamente',
+          };
+          
+        if (inmuebleeliminado === 0) {
+            return res.status(404).json({ message: "Inmueble no encontrado" });
+        }
+        res.json(mensaje); 
+
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
