@@ -1,9 +1,11 @@
 import app from "./app.js"
 import {sequelize} from "./database/database.js";
 
+import './models/inmueble.js'
+
 async function main(){
     try {
-        await sequelize .authenticate();
+        await sequelize .sync();
         console.log("Conexion establecida correctamente.");
         app.listen(4000);
         console.log("server is listening on port", 4000);
@@ -13,9 +15,3 @@ async function main(){
 }
 
 main();
-
-
-
-
-
-
